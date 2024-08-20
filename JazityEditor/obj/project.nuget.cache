@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "FbVyxJO/kaIlTyjKX16VQFO4Dnydb2ht+1SKzGneDH7XDQA507kMza7saVFC5WdIEX7k/CmEWRGrEtLzhOETKw==",
+  "success": true,
+  "projectFilePath": "D:\\Jazity\\JazityEditor\\JazityEditor.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jaspe\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\jaspe\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\jaspe\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\jaspe\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.26\\microsoft.netcore.app.host.win-x64.6.0.26.nupkg.sha512"
+  ],
+  "logs": []
+}
