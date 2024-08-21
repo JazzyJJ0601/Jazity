@@ -21,6 +21,7 @@ namespace JazityEditor.Utilities
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+                throw;
                 // TODO: Log error
             }
         }

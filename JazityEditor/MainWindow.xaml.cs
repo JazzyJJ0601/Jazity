@@ -1,7 +1,9 @@
 ﻿using JazityEditor.GameProjects;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,13 +26,20 @@ namespace JazityEditor
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += OnMainWindow_Loaded;
+            Loaded += OnMainWindowLoaded;
+            Closing += OnMainWindowClosing!;
         }
 
-        private void OnMainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
         {
-            Loaded -= OnMainWindow_Loaded;
+            Loaded -= OnMainWindowLoaded;
             OpenProjectBrowserDialog();
+        }
+        
+        private void OnMainWindowClosing(object sender, CancelEventArgs e)
+        {
+            Closing -= OnMainWindowClosing!;
+            Project.Current?.Unload();
         }
 
         private void OpenProjectBrowserDialog()
@@ -40,9 +49,14 @@ namespace JazityEditor
             {
                 Application.Current.Shutdown();
             }
+            else if (projectBrowser.DataContext == null)
+            {
+                Application.Current.Shutdown();
+            }
             else
             {
-                // show project here
+                Project.Current?.Unload();
+                DataContext = projectBrowser.DataContext;
             }
         }
     }
