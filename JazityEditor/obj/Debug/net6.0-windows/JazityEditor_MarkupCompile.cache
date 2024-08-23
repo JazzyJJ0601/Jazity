@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 D:\Jazity\JazityEditor\App.xaml
-71536154890
+81963654232
 
-181052733628
+22-1573347677
 1941142210653
-Editor\WorldEditor\ProjectLayoutView.xaml;Editor\WorldEditor\WordEditorView.xaml;GameProjects\NewProjectView.xaml;GameProjects\OpenProjectView.xaml;GameProjects\ProjectBrowserDialog.xaml;MainWindow.xaml;Utilities\UndoRedoView.xaml;
+Editor\WorldEditor\GameEntityView.xaml;Editor\WorldEditor\ProjectLayoutView.xaml;Editor\WorldEditor\WordEditorView.xaml;GameProjects\NewProjectView.xaml;GameProjects\OpenProjectView.xaml;GameProjects\ProjectBrowserDialog.xaml;MainWindow.xaml;Utilities\UndoRedoView.xaml;
 
 False
 

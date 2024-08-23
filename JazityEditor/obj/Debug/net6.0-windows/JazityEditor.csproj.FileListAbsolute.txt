@@ -52,3 +52,5 @@ D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\ProjectLayout
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\ProjectLayoutView.baml
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Utilities\UndoRedoView.g.cs
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Utilities\UndoRedoView.baml
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\GameEntityView.g.cs
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\GameEntityView.baml
