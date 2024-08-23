@@ -46,3 +46,9 @@ D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\GameProjects\NewProjectView.baml
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\GameProjects\OpenProjectView.baml
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\GameProjects\ProjectBrowserDialog.baml
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\JazityEditor.csproj.AssemblyReference.cache
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\WordEditorView.g.cs
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\WordEditorView.baml
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\ProjectLayoutView.g.cs
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\ProjectLayoutView.baml
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Utilities\UndoRedoView.g.cs
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Utilities\UndoRedoView.baml

@@ -23,6 +23,14 @@ namespace JazityEditor.GameProjects
         public OpenProjectView()
         {
             InitializeComponent();
+
+            Loaded += (s, e) =>
+            {
+                var item =
+                    projectsListBox.ItemContainerGenerator.ContainerFromIndex(projectsListBox.SelectedIndex) as
+                        ListBoxItem;
+                item?.Focus();
+            };
         }
 
         private void OnOpen_Button_Click(object sender, RoutedEventArgs e)
