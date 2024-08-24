@@ -180,8 +180,8 @@ namespace JazityEditor.GameProjects
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                // TODO: Log error
-                return string.Empty;
+                Logger.Log(MessageType.Error, $"Failed to create {ProjectName}");
+                throw;
             }
         }
 
@@ -208,7 +208,8 @@ namespace JazityEditor.GameProjects
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                // TODO: Log error
+                Logger.Log(MessageType.Error, $"Failed to load project templates");
+                throw;
             }
         }
     }

@@ -98,7 +98,8 @@ namespace JazityEditor.GameProjects
             catch (Exception ex)
             {
                 Debug.Write(ex.Message);
-                // TODO: Log error
+                Logger.Log(MessageType.Error, $"Failed to read project data");
+                throw;
             }
         }
     }

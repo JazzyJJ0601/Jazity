@@ -21,8 +21,8 @@ namespace JazityEditor.Utilities
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+                Logger.Log(MessageType.Error, $"Failed to serialize {instance} to {Path}");
                 throw;
-                // TODO: Log error
             }
         }
 
@@ -38,8 +38,8 @@ namespace JazityEditor.Utilities
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                // TODO: Log error
-                return default(T)!;
+                Logger.Log(MessageType.Error, $"Failed to deserialize {path}");
+                throw;
             }
         }
     }

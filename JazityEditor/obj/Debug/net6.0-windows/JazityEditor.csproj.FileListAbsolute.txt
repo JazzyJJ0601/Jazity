@@ -54,3 +54,8 @@ D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Utilities\UndoRedoView.g.cs
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Utilities\UndoRedoView.baml
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\GameEntityView.g.cs
 D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Editor\WorldEditor\GameEntityView.baml
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Dictionaries\ControlTemplates.baml
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Dictionaries\ControlTemplates.g.cs
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\App.baml
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Utilities\LoggerView.g.cs
+D:\Jazity\JazityEditor\obj\Debug\net6.0-windows\Utilities\LoggerView.baml

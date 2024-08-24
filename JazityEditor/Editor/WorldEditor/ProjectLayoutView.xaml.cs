@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using JazityEditor.Components;
 using JazityEditor.Editor;
 using JazityEditor.GameProjects;
+using JazityEditor.Utilities;
 
 namespace JazityEditor.Editor;
 
@@ -22,7 +23,28 @@ public partial class ProjectLayoutView : UserControl
 
     private void OnGameEntities_ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        var entity = ((sender as ListBox)!).SelectedItems[0];
-        GameEntityView.Instace.DataContext = entity;
+        GameEntityView.Instace.DataContext = null;
+        var listBox = sender as ListBox;
+        if (e.AddedItems.Count > 0)
+        {
+            GameEntityView.Instace.DataContext = listBox!.SelectedItems[0];
+        }
+        
+        var newSelection = listBox!.SelectedItems.Cast<GameEntity>().ToList();
+        var previousSelection = newSelection.Except(e.AddedItems.Cast<GameEntity>()).Concat(e.RemovedItems.Cast<GameEntity>()).ToList();
+        
+        Project.UndoRedo.Add(new UndoRedoAction(
+            () =>
+            {
+                listBox.UnselectAll(); 
+                previousSelection.ForEach(x => ((listBox.ItemContainerGenerator.ContainerFromItem(x) as ListBoxItem)!).IsSelected = true);
+            },
+            () =>
+            {
+                listBox.UnselectAll(); 
+                newSelection.ForEach(x => ((listBox.ItemContainerGenerator.ContainerFromItem(x) as ListBoxItem)!).IsSelected = true);
+            },
+            "Selection Change"
+            ));
     }
 }
