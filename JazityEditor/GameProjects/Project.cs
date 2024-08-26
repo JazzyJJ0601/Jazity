@@ -12,7 +12,7 @@ using JazityEditor.Utilities;
 namespace JazityEditor.GameProjects
 {
     [DataContract(Name = "Game")]
-    public class Project : ViewModelBase
+    class Project : ViewModelBase
     {
         public static string Extension { get; } = ".jazity";
         [DataMember] public string Name { get; private set; } = "Awesome Game";
