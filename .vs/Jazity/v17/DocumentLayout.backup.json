@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "JazityEditor\\GameProjects\\NewProject.cs",
               "ToolTip": "D:\\Jazity\\JazityEditor\\GameProjects\\NewProject.cs",
               "RelativeToolTip": "JazityEditor\\GameProjects\\NewProject.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAUwI0AAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAUwI4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-20T15:15:13.657Z",
               "EditorCaption": ""
@@ -50,8 +50,7 @@
               "ToolTip": "D:\\Jazity\\JazityEditor\\MainWindow.xaml",
               "RelativeToolTip": "JazityEditor\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-20T15:09:04.048Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:09:04.048Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "JazityEditor\\MainWindow.xaml.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAwDEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-20T15:09:02.726Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T15:09:02.726Z"
             },
             {
               "$type": "Document",
