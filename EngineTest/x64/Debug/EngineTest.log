@@ -1,0 +1,25 @@
+﻿  Main.cpp
+D:\Jazity\EngineTest\Main.cpp(14,5): error C2065: 'engine_test': undeclared identifier
+D:\Jazity\EngineTest\Main.cpp(14,17): error C2146: syntax error: missing ';' before identifier 'test'
+D:\Jazity\EngineTest\Main.cpp(14,17): error C2259: 'test': cannot instantiate abstract class
+      D:\Jazity\EngineTest\test.h(4,7):
+      see declaration of 'test'
+      D:\Jazity\EngineTest\Main.cpp(14,17):
+      due to following members:
+      D:\Jazity\EngineTest\Main.cpp(14,17):
+      'bool test::initialize(void)': is abstract
+      D:\Jazity\EngineTest\test.h(7,18):
+      see declaration of 'test::initialize'
+      D:\Jazity\EngineTest\Main.cpp(14,17):
+      'void test::run(void)': is abstract
+      D:\Jazity\EngineTest\test.h(8,18):
+      see declaration of 'test::run'
+      D:\Jazity\EngineTest\Main.cpp(14,17):
+      'void test::shutdown(void)': is abstract
+      D:\Jazity\EngineTest\test.h(9,18):
+      see declaration of 'test::shutdown'
+  
+D:\Jazity\EngineTest\Main.cpp(16,13): error C2059: syntax error: '.'
+D:\Jazity\EngineTest\Main.cpp(17,5): error C2143: syntax error: missing ';' before '{'
+D:\Jazity\EngineTest\Main.cpp(18,13): error C2059: syntax error: '.'
+D:\Jazity\EngineTest\Main.cpp(21,9): error C2059: syntax error: '.'

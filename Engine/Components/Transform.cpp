@@ -53,7 +53,7 @@ namespace jazity::transform
     math::v3 component::scale() const
     {
         assert(is_valid());
-        return scales[id::index(_id)];
+        return scales[id::index(_id)]; 
     }
     
 }

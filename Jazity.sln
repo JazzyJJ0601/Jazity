@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JazityEditor", "JazityEdito
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\Engine.vcxproj", "{3477850E-1C8F-46A9-AEDA-C7DA3FF7465C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineTest", "EngineTest\EngineTest.vcxproj", "{ADF893A9-3053-4381-B8B8-ECF6983B595F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineDLL", "EngineDLL\EngineDLL.vcxproj", "{51C1A2D1-5E78-436F-9F8B-EE1676C2EEE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +25,14 @@ Global
 		{3477850E-1C8F-46A9-AEDA-C7DA3FF7465C}.Debug|x64.Build.0 = Debug|x64
 		{3477850E-1C8F-46A9-AEDA-C7DA3FF7465C}.Release|x64.ActiveCfg = Release|x64
 		{3477850E-1C8F-46A9-AEDA-C7DA3FF7465C}.Release|x64.Build.0 = Release|x64
+		{ADF893A9-3053-4381-B8B8-ECF6983B595F}.Debug|x64.ActiveCfg = Debug|x64
+		{ADF893A9-3053-4381-B8B8-ECF6983B595F}.Debug|x64.Build.0 = Debug|x64
+		{ADF893A9-3053-4381-B8B8-ECF6983B595F}.Release|x64.ActiveCfg = Release|x64
+		{ADF893A9-3053-4381-B8B8-ECF6983B595F}.Release|x64.Build.0 = Release|x64
+		{51C1A2D1-5E78-436F-9F8B-EE1676C2EEE9}.Debug|x64.ActiveCfg = Debug|x64
+		{51C1A2D1-5E78-436F-9F8B-EE1676C2EEE9}.Debug|x64.Build.0 = Debug|x64
+		{51C1A2D1-5E78-436F-9F8B-EE1676C2EEE9}.Release|x64.ActiveCfg = Release|x64
+		{51C1A2D1-5E78-436F-9F8B-EE1676C2EEE9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
