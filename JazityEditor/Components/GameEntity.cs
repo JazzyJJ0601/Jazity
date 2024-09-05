@@ -1,14 +1,14 @@
 ﻿using JazityEditor.DLLWrappers;
+using JazityEditor.GameProjects;
+using JazityEditor.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Windows.Input;
-using JazityEditor.Components;
-using JazityEditor.GameProjects;
-using JazityEditor.Utilities;
 
 namespace JazityEditor.Components
 {
@@ -39,23 +39,24 @@ namespace JazityEditor.Components
                 if (_isActive != value)
                 {
                     _isActive = value;
-                    if (_isActive)
+                    if(_isActive)
                     {
                         EntityId = EngineAPI.CreateGameEntity(this);
                         Debug.Assert(ID.IsValid(_entityId));
                     }
-                    else
+                    else if(ID.IsValid(EntityId))
                     {
                         EngineAPI.RemoveGameEntity(this);
+                        EntityId = ID.INVALID_ID;
                     }
-                    
+
                     OnPropertyChanged(nameof(IsActive));
                 }
             }
         }
-            
+
+
         private bool _isEnabled = true;
-        
         [DataMember]
         public bool IsEnabled
         {
@@ -69,8 +70,8 @@ namespace JazityEditor.Components
                 }
             }
         }
-        
-        private string _name = null!;
+
+        private string _name;
         [DataMember]
         public string Name
         {
@@ -84,28 +85,27 @@ namespace JazityEditor.Components
                 }
             }
         }
-        
+
         [DataMember]
-        public Scene ParentScene { get; private set; } = null!;
-        
+        public Scene ParentScene { get; private set; }
+
         [DataMember(Name = nameof(Components))]
         private readonly ObservableCollection<Component> _components = new ObservableCollection<Component>();
-        public ReadOnlyObservableCollection<Component> Components { get; private set; } = null!;
-        
-        public Component GetComponent(Type type) => Components.FirstOrDefault(c=> c.GetType() == type)!;
+        public ReadOnlyObservableCollection<Component> Components { get; private set; }
 
-        public T GetComponent<T>() where T : Component => (GetComponent(typeof(T)) as T)!;
-        
+        public Component GetComponent(Type type) => Components.FirstOrDefault(c => c.GetType() == type);
+        public T GetComponent<T>() where T : Component => GetComponent(typeof(T)) as T;
+
         [OnDeserialized]
         void OnDeserialized(StreamingContext context)
         {
-            if (_components != null)
+            if(_components != null)
             {
                 Components = new ReadOnlyObservableCollection<Component>(_components);
                 OnPropertyChanged(nameof(Components));
             }
         }
-        
+
         public GameEntity(Scene scene)
         {
             Debug.Assert(scene != null);
@@ -117,10 +117,9 @@ namespace JazityEditor.Components
 
     abstract class MSEntity : ViewModelBase
     {
+        // Enables updates to selected entities
         private bool _enableUpdates = true;
-        
         private bool? _isEnabled;
-        
         public bool? IsEnabled
         {
             get => _isEnabled;
@@ -134,9 +133,8 @@ namespace JazityEditor.Components
             }
         }
 
-        private string? _name;
-        
-        public string? Name
+        private string _name;
+        public string Name
         {
             get => _name;
             set
@@ -150,60 +148,57 @@ namespace JazityEditor.Components
         }
 
         private readonly ObservableCollection<IMSComponent> _components = new ObservableCollection<IMSComponent>();
-        public ReadOnlyObservableCollection<IMSComponent> Components { get; } = null!;
+        public ReadOnlyObservableCollection<IMSComponent> Components { get; }
 
-        public List<GameEntity> SelectedEntities { get; } = null!;
-
-        public static float? GetMixedValue(List<GameEntity> entities, Func<GameEntity, float> getProperty)
+        public T GetMSComponent<T>() where T : IMSComponent
         {
-            var value = getProperty(entities.First());
-            foreach (var entity in entities.Skip(1))
+            return (T)Components.FirstOrDefault(x => x.GetType() == typeof(T));
+        }
+
+        public List<GameEntity> SelectedEntities { get; }
+
+        private void MakeComponentList()
+        {
+            _components.Clear();
+            var firstEntity = SelectedEntities.FirstOrDefault();
+            if (firstEntity == null) return;
+
+            foreach (var component in firstEntity.Components)
             {
-                if (!value.IsTheSameAs(getProperty(entity)))
+                var type = component.GetType();
+                if(!SelectedEntities.Skip(1).Any(entity=>entity.GetComponent(type) == null))
                 {
-                    return null;
+                    Debug.Assert(Components.FirstOrDefault(x => x.GetType() == type) == null);
+                    _components.Add(component.GetMultiselectionComponent(this));
                 }
             }
-
-            return value;
         }
-        
-        public static bool? GetMixedValue(List<GameEntity> entities, Func<GameEntity, bool> getProperty)
+
+        public static float? GetMixedValue<T>(List<T> objects, Func<T, float> getProperty)
         {
-            var value = getProperty(entities.First());
-            foreach (var entity in entities.Skip(1))
-            {
-                if (value != getProperty(entity))
-                {
-                    return null;
-                }
-            }
-
-            return value;
+            var value = getProperty(objects.First());
+            return objects.Skip(1).Any(x => !getProperty(x).IsTheSameAs(value)) ? (float?)null : value;
         }
-        
-        public static string GetMixedValue(List<GameEntity> entities, Func<GameEntity, string> getProperty)
+
+        public static bool? GetMixedValue<T>(List<T> objects, Func<T, bool> getProperty)
         {
-            var value = getProperty(entities.First());
-            foreach (var entity in entities.Skip(1))
-            {
-                if (value != getProperty(entity))
-                {
-                    return null!;
-                }
-            }
-
-            return value;
+            var value = getProperty(objects.First());
+            return objects.Skip(1).Any(x => value != getProperty(x)) ? (bool?)null : value;
         }
-        
+
+        public static string GetMixedValue<T>(List<T> objects, Func<T, string> getProperty)
+        {
+            var value = getProperty(objects.First());
+            return objects.Skip(1).Any(x => value != getProperty(x)) ? null : value;
+        }
+
         protected virtual bool UpdateGameEntities(string propertyName)
         {
             switch (propertyName)
             {
-                case nameof(IsEnabled): SelectedEntities.ForEach(x=>x.IsEnabled = IsEnabled!.Value); return true;
-                case nameof(Name): SelectedEntities.ForEach(x=>x.Name = Name!); return true;
+                case nameof(IsEnabled): SelectedEntities.ForEach(x => x.IsEnabled = IsEnabled.Value); return true;
+                case nameof(Name): SelectedEntities.ForEach(x => x.Name = Name); return true;
             }
-
             return false;
         }
 
@@ -219,6 +214,7 @@ namespace JazityEditor.Components
         {
             _enableUpdates = false;
             UpdateMSGameEntity();
+            MakeComponentList();
             _enableUpdates = true;
         }
 
@@ -227,7 +223,7 @@ namespace JazityEditor.Components
             Debug.Assert(entities?.Any() == true);
             Components = new ReadOnlyObservableCollection<IMSComponent>(_components);
             SelectedEntities = entities;
-            PropertyChanged += (s, e) => { if (_enableUpdates) UpdateGameEntities(e.PropertyName!); };
+            PropertyChanged += (s, e) => { if(_enableUpdates) UpdateGameEntities(e.PropertyName); };
         }
     }
 

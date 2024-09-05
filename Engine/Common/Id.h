@@ -7,7 +7,7 @@ using id_type = u32;
 
 namespace detail {
 
-constexpr u32 generation_bits{ 18 };
+constexpr u32 generation_bits{ 16 };
 constexpr u32 index_bits{ sizeof(id_type) * 8 - generation_bits };
 constexpr id_type index_mask{ (id_type{1} << index_bits) - 1 };
 constexpr id_type generation_mask{ (id_type{1} << generation_bits) - 1 };
@@ -17,8 +17,8 @@ constexpr id_type invalid_id{ id_type(-1) };
 constexpr u32 min_deleted_elements{ 1024 };
 
 using generation_type = std::conditional_t<detail::generation_bits <= 16, std::conditional_t<detail::generation_bits <= 8, u8, u16>, u32>;
-static_assert(sizeof(generation_type) * 8 >= detail::generation_bits);
-static_assert((sizeof(id_type) - sizeof(generation_type)) > 0);
+    static_assert(sizeof(generation_type) * 8 >= detail::generation_bits);
+    static_assert((sizeof(id_type) - sizeof(generation_type)) > 0);
 
 constexpr generation_type max_generation{ (generation_type)(detail::generation_mask - 1) }; // e.g. 254 for 8-bit generations.
 

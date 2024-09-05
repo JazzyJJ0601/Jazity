@@ -15,12 +15,12 @@ namespace jazity::game_entity
         utl::deque<entity_id> free_ids;
     }
 
-    entity create_game_entity(const entity_info& info)
+    entity create_game_entity(entity_info& info)
     {
         assert(info.transform); // all game entities must have a transform component
-        if (!info.transform) return entity{};
+        if (!info.transform) return {};
 
-        entity_id id;
+        entity_id id{};
         
         if (free_ids.size() > id::min_deleted_elements)
         {
@@ -46,6 +46,7 @@ namespace jazity::game_entity
         // Create transform component
         assert(!transforms[index].is_valid());
         transforms[index] = transform::create_transform(*info.transform, new_entity);
+        assert(transforms[index].get_id() == id);
         if (!transforms[index].is_valid()) return {};
 
         return new_entity;

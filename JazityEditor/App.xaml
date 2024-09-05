@@ -5,6 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          <ResourceDictionary><ResourceDictionary.MergedDictionaries>
+                 <ResourceDictionary Source="pack://application:,,,/Dictionaries/EditorColours.xaml"/>
                  <ResourceDictionary Source="pack://application:,,,/Dictionaries/ControlTemplates.xaml"/>
              </ResourceDictionary.MergedDictionaries>
          </ResourceDictionary>

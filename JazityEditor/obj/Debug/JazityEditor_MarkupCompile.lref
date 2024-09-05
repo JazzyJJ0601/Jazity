@@ -1,7 +1,11 @@
-﻿
+﻿D:\Jazity\JazityEditor\obj\Debug\GeneratedInternalTypeHelper.g.cs
 FD:\Jazity\JazityEditor\App.xaml;;
+FD:\Jazity\JazityEditor\Dictionaries\ControlTemplates.xaml;;
+FD:\Jazity\JazityEditor\Dictionaries\EditorColours.xaml;;
+FD:\Jazity\JazityEditor\Editor\WorldEditor\ComponentView.xaml;;
 FD:\Jazity\JazityEditor\Editor\WorldEditor\GameEntityView.xaml;;
 FD:\Jazity\JazityEditor\Editor\WorldEditor\ProjectLayoutView.xaml;;
+FD:\Jazity\JazityEditor\Editor\WorldEditor\TransformView.xaml;;
 FD:\Jazity\JazityEditor\Editor\WorldEditor\WordEditorView.xaml;;
 FD:\Jazity\JazityEditor\GameProjects\NewProjectView.xaml;;
 FD:\Jazity\JazityEditor\GameProjects\OpenProjectView.xaml;;

@@ -86,7 +86,7 @@ namespace JazityEditor.GameProjects
                 OnPropertyChanged(nameof(GameEntities));
             }
 
-            foreach (var entity in _gameEntities)
+            foreach (var entity in _gameEntities!)
             {
                 entity.IsActive = IsActive;
             }

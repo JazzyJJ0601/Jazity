@@ -39,3 +39,8 @@ D:\Jazity\JazityEditor\obj\Debug\refint\JazityEditor.dll
 D:\Jazity\JazityEditor\obj\Debug\JazityEditor.pdb
 D:\Jazity\JazityEditor\obj\Debug\JazityEditor.genruntimeconfig.cache
 D:\Jazity\JazityEditor\obj\Debug\ref\JazityEditor.dll
+D:\Jazity\JazityEditor\obj\Debug\Dictionaries\EditorColours.baml
+D:\Jazity\JazityEditor\obj\Debug\Editor\WorldEditor\ComponentView.g.cs
+D:\Jazity\JazityEditor\obj\Debug\Editor\WorldEditor\TransformView.g.cs
+D:\Jazity\JazityEditor\obj\Debug\Editor\WorldEditor\ComponentView.baml
+D:\Jazity\JazityEditor\obj\Debug\Editor\WorldEditor\TransformView.baml
