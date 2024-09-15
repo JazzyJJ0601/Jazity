@@ -22,9 +22,10 @@ namespace JazityEditor.Editor
     /// </summary>
     public partial class GameEntityView : UserControl
     {
-        private Action _undoAction;
-        private string _propertyName;
-        public static GameEntityView Instance { get; private set; }
+        private Action _undoAction = null!;
+        private string _propertyName = null!;
+        public static GameEntityView Instance { get; private set; } = null!;
+
         public GameEntityView()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace JazityEditor.Editor
                 var entity = DataContext as MSEntity;
                 if (entity != null)
                 {
-                    entity.PropertyChanged += (s, e) => _propertyName = e.PropertyName;
+                    entity.PropertyChanged += (s, e) => _propertyName = e.PropertyName!;
                 }
             };
         }
@@ -43,22 +44,22 @@ namespace JazityEditor.Editor
         private Action GetRenameAction()
         {
             var vm = DataContext as MSEntity;
-            var selection = vm.SelectedEntities.Select(entity => (entity, entity.Name)).ToList();
+            var selection = vm!.SelectedEntities.Select(entity => (entity, entity.Name)).ToList();
             return new Action(() =>
             {
                 selection.ForEach(item => item.entity.Name = item.Name);
-                (DataContext as MSEntity).Refresh();
+                ((DataContext as MSEntity)!).Refresh();
             });
         }
 
         private Action GetIsEnabledAction()
         {
             var vm = DataContext as MSEntity;
-            var selection = vm.SelectedEntities.Select(entity => (entity, entity.IsEnabled)).ToList();
+            var selection = vm!.SelectedEntities.Select(entity => (entity, entity.IsEnabled)).ToList();
             return new Action(() =>
             {
                 selection.ForEach(item => item.entity.IsEnabled = item.IsEnabled);
-                (DataContext as MSEntity).Refresh();
+                ((DataContext as MSEntity)!).Refresh();
             });
         }
 
@@ -74,16 +75,16 @@ namespace JazityEditor.Editor
             {
                 var redoAction = GetRenameAction();
                 Project.UndoRedo.Add(new UndoRedoAction(_undoAction, redoAction, "Rename game entity"));
-                _propertyName = null;
+                _propertyName = null!;
             }
-            _undoAction = null;
+            _undoAction = null!;
         }
 
         private void OnIsEnabled_CheckBox_Click(object sender, RoutedEventArgs e)
         {
             var undoAction = GetIsEnabledAction();
             var vm = DataContext as MSEntity;
-            vm.IsEnabled = (sender as CheckBox).IsChecked == true;
+            vm!.IsEnabled = ((sender as CheckBox)!).IsChecked == true;
             var redoAction = GetIsEnabledAction();
             Project.UndoRedo.Add(new UndoRedoAction(undoAction, redoAction,
                 vm.IsEnabled == true ? "Enable game entity" : "Disable game entity"));

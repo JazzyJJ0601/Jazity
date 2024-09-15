@@ -17,7 +17,7 @@ namespace JazityEditor.Editor;
 
 public partial class TransformView : UserControl
 {
-    private Action _undoAction = null;
+    private Action _undoAction = null!;
     private bool _propertyChanged = false;
     public TransformView()
     {
@@ -27,7 +27,7 @@ public partial class TransformView : UserControl
      private void OnTransformViewLoaded(object sender, RoutedEventArgs e)
         {
             Loaded -= OnTransformViewLoaded;
-            (DataContext as MSTransform).PropertyChanged += (s, e) => _propertyChanged = true;
+            ((DataContext as MSTransform)!).PropertyChanged += (s, e) => _propertyChanged = true;
         }
 
         private Action GetAction(Func<Transform, (Transform transform, Vector3)> selector,
@@ -35,9 +35,9 @@ public partial class TransformView : UserControl
         {
             if (!(DataContext is MSTransform vm))
             {
-                _undoAction = null;
+                _undoAction = null!;
                 _propertyChanged = false;
-                return null;
+                return null!;
             }
 
             var selection = vm.SelectedComponents.Select(x=>selector(x)).ToList();
@@ -99,7 +99,7 @@ public partial class TransformView : UserControl
         {
             if (_propertyChanged && _undoAction != null)
             {
-                OnPosition_VectorBox_PreviewMouse_LBU(sender, null);
+                OnPosition_VectorBox_PreviewMouse_LBU(sender, null!);
             }
         }
 
@@ -107,7 +107,7 @@ public partial class TransformView : UserControl
         {
             if (_propertyChanged && _undoAction != null)
             {
-                OnRotation_VectorBox_PreviewMouse_LBU(sender, null);
+                OnRotation_VectorBox_PreviewMouse_LBU(sender, null!);
             }
         }
 
@@ -115,7 +115,7 @@ public partial class TransformView : UserControl
         {
             if (_propertyChanged && _undoAction != null)
             {
-                OnScale_VectorBox_PreviewMouse_LBU(sender, null);
+                OnScale_VectorBox_PreviewMouse_LBU(sender, null!);
             }
         }
 }

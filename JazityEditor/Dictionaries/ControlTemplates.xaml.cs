@@ -12,7 +12,7 @@ namespace JazityEditor.Dictionories
         private void OnTextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             var textBox = sender as TextBox;
-            var exp = textBox.GetBindingExpression(TextBox.TextProperty);
+            var exp = textBox!.GetBindingExpression(TextBox.TextProperty);
             if (exp == null) return;
             
             if(e.Key == Key.Enter)
@@ -38,7 +38,7 @@ namespace JazityEditor.Dictionories
         private void OnTextBoxRename_KeyDown(object sender, KeyEventArgs e)
         {
             var textBox = sender as TextBox;
-            var exp = textBox.GetBindingExpression(TextBox.TextProperty);
+            var exp = textBox!.GetBindingExpression(TextBox.TextProperty);
             if (exp == null) return;
 
             if (e.Key == Key.Enter)
@@ -64,7 +64,7 @@ namespace JazityEditor.Dictionories
         private void OnTextBoxRename_LostFocus(object sender, RoutedEventArgs e)
         {
             var textBox = sender as TextBox;
-            if (!textBox.IsVisible) return;
+            if (!textBox!.IsVisible) return;
             var exp = textBox.GetBindingExpression(TextBox.TextProperty);
             if(exp != null)
             {

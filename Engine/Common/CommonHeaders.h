@@ -7,6 +7,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <typeinfo>
+#include "unordered_map"
 
 #if defined(_WIN64)
 #include <DirectXMath.h>

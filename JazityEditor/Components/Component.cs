@@ -43,7 +43,7 @@ namespace JazityEditor.Components
         {
             Debug.Assert(msEntity?.SelectedEntities?.Any() == true);
             SelectedComponents = msEntity.SelectedEntities.Select(entity => entity.GetComponent<T>()).ToList();
-            PropertyChanged += (s, e) => { if (_enableUpdates) UpdateComponents(e.PropertyName); };
+            PropertyChanged += (s, e) => { if (_enableUpdates) UpdateComponents(e.PropertyName!); };
         }
     }
 }
